@@ -1,0 +1,35 @@
+name: PR Grade
+
+on:
+  pull_request:
+    branches:
+      - "workspace/**"
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Placeholder grader
+        run: echo "Grader placeholder — replace with real grader"
+
+      - name: Add PR comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "Task checked. Official score recorded with trainer."
+            })

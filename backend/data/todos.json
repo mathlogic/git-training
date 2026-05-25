@@ -1,0 +1,5 @@
+[
+  { "id": 1, "title": "Clone the repository", "completed": true },
+  { "id": 2, "title": "Create my first branch", "completed": false },
+  { "id": 3, "title": "Open my first PR", "completed": false }
+]
