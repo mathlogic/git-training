@@ -6,12 +6,14 @@ export default function TaskDetailsDrawer({ task, gitUsername, isOpen, onClose }
 
   const taskNumber = task.id.toString().padStart(2, "0");
   const workspaceBranch = `workspace/${gitUsername}`;
-  const taskBranch = `trainee/${gitUsername}/task-${taskNumber}`;
+  const traineeBranch = `trainee/${gitUsername}`;
   const checkoutCommand = `git checkout ${workspaceBranch}`;
   const pullCommand = `git pull origin ${workspaceBranch}`;
-  const createBranchCommand = `git checkout -b ${taskBranch}`;
+  const isFirstTask = task.id === 1;
+  const branchCommand = isFirstTask ? `git checkout -b ${traineeBranch}` : `git checkout ${traineeBranch}`;
+  const branchCommandLabel = isFirstTask ? "Create Trainee Branch" : "Switch Trainee Branch";
   const validateCommand = `python check.py --task ${taskNumber}`;
-  const pushCommand = `git push origin ${taskBranch}`;
+  const pushCommand = `git push -u origin ${traineeBranch}`;
 
   return (
     <div className="fixed inset-0 z-50 flex">
@@ -50,7 +52,7 @@ export default function TaskDetailsDrawer({ task, gitUsername, isOpen, onClose }
               {[
                 { label: "Checkout Workspace", command: checkoutCommand },
                 { label: "Pull Latest", command: pullCommand },
-                { label: "Create Task Branch", command: createBranchCommand },
+                { label: branchCommandLabel, command: branchCommand },
                 { label: "Run Validation", command: validateCommand },
                 { label: "Push Branch", command: pushCommand }
               ].map((item) => (

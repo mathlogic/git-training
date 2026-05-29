@@ -121,11 +121,12 @@ def current_branch() -> str:
 
 
 def expected_branch_pattern(task_id: int) -> re.Pattern:
-    return re.compile(rf"^trainee/[^/]+/task-{task_id:02d}$")
+    # Support a single long-lived trainee branch for all tasks.
+    return re.compile(r"^trainee/[^/]+$")
 
 
 def get_workspace_ref(branch: str) -> str:
-    match = re.match(r"^trainee/([^/]+)/task-\d{2}$", branch)
+    match = re.match(r"^trainee/([^/]+)$", branch)
     if not match:
         return ""
     name = match.group(1)
@@ -225,8 +226,8 @@ def validate_task(task: TaskDef) -> Report:
     )
     report.require(
         bool(expected_branch_pattern(task.id).match(branch)),
-        f"Branch naming matches expected task pattern (task-{task.id:02d}).",
-        f"Branch should look like trainee/<name>/task-{task.id:02d}. Current: {branch or 'unknown'}",
+        "Branch naming matches expected trainee pattern.",
+        f"Branch should look like trainee/<name>. Current: {branch or 'unknown'}",
     )
 
     hint_exists = file_path(task.hint_file).exists()

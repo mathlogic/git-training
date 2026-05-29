@@ -26,8 +26,8 @@ const defaultWorkingUser = {
   favoriteTool: "VS Code"
 };
 
-const PROGRESS_KEY = "git-training-progress-v1";
 const ACTIVE_USER_KEY = "git-training-active-user";
+const VALIDATION_CACHE_KEY = "git-training-validation-cache-v1";
 const statCards = [
   { key: "tasks", label: "Tasks completed", Icon: CheckCircleIcon },
   { key: "score", label: "Score so far", Icon: TrophyIcon },
@@ -37,7 +37,7 @@ const statCards = [
 const GitGraphVisualizer = lazy(() => import("./components/GitGraphVisualizer"));
 
 function getTaskBranchName(gitUsername) {
-  return `trainee/${gitUsername}/task-xx`;
+  return `trainee/${gitUsername}`;
 }
 
 function deriveGitUsername(name, email) {
@@ -64,20 +64,19 @@ function createWorkingUser(gitUser) {
   };
 }
 
-function readLocalStorage(key, fallback) {
-  try {
-    const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
 export default function App() {
   const [apiStatus, setApiStatus] = useState("checking");
   const [users, setUsers] = useState([defaultWorkingUser]);
   const [activeUserId, setActiveUserId] = useState(() => localStorage.getItem(ACTIVE_USER_KEY) || defaultWorkingUser.id);
-  const [progressByUser, setProgressByUser] = useState(() => readLocalStorage(PROGRESS_KEY, {}));
+  const [passedTaskIds, setPassedTaskIds] = useState(() => {
+    try {
+      const raw = localStorage.getItem(VALIDATION_CACHE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  });
 
   useEffect(() => {
     fetch("http://localhost:8000/")
@@ -94,15 +93,28 @@ export default function App() {
       .catch(() => {
         setUsers([defaultWorkingUser]);
       });
+
+    const loadValidations = () => {
+      fetch("http://localhost:8000/task-validations")
+        .then((response) => response.json())
+        .then((payload) => {
+          const next = Array.isArray(payload?.passedTaskIds) ? payload.passedTaskIds : [];
+          setPassedTaskIds(next);
+          localStorage.setItem(VALIDATION_CACHE_KEY, JSON.stringify(next));
+        })
+        .catch(() => {
+          // Keep the last successful validation state on transient API failures.
+        });
+    };
+
+    loadValidations();
+    const timer = setInterval(loadValidations, 10000);
+    return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
     localStorage.setItem(ACTIVE_USER_KEY, activeUserId);
   }, [activeUserId]);
-
-  useEffect(() => {
-    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progressByUser));
-  }, [progressByUser]);
 
   // TASK-03-HINT: Change this title for Task 03
   const pageTitle = "Git and GitHub Training Lab";
@@ -118,8 +130,8 @@ export default function App() {
       tip: "Get the latest instructor updates from remote into your workspace branch."
     },
     {
-      command: `git checkout -b trainee/${activeUser.gitUsername}/task-xx`,
-      tip: "Create a dedicated task branch from workspace so each task stays isolated."
+      command: `git checkout -b trainee/${activeUser.gitUsername}`,
+      tip: "Create one trainee branch from workspace and use it for all tasks."
     },
     {
       command: "python check.py --task XX",
@@ -138,8 +150,8 @@ export default function App() {
       tip: "Create a clean commit with a meaningful message and no WIP wording."
     },
     {
-      command: `git push origin trainee/${activeUser.gitUsername}/task-xx`,
-      tip: "Push your task branch so you can open a pull request on GitHub."
+      command: `git push -u origin trainee/${activeUser.gitUsername}`,
+      tip: "Push your trainee branch so you can open a pull request on GitHub."
     },
     {
       command: "git fetch origin",
@@ -170,21 +182,12 @@ export default function App() {
       tip: "View a compact branch history graph to understand commit flow."
     }
   ];
-  const completedForUser = progressByUser[activeUser.id] || [];
-  const tasks = starterTasks.map((task) => ({ ...task, completed: completedForUser.includes(task.id) }));
+  const tasks = starterTasks.map((task) => ({ ...task, completed: passedTaskIds.includes(task.id) }));
   const completedTasks = tasks.filter((task) => task.completed).length;
   const completedCore = tasks.filter((task) => task.completed && task.phase === "core").length;
   const completedAdvanced = tasks.filter((task) => task.completed && task.phase === "advanced").length;
   const score = tasks.filter((task) => task.completed).reduce((sum, task) => sum + task.points, 0);
   const progress = Math.round((completedTasks / tasks.length) * 100);
-
-  const toggleTask = (taskId) => {
-    setProgressByUser((previous) => {
-      const current = previous[activeUser.id] || [];
-      const next = current.includes(taskId) ? current.filter((id) => id !== taskId) : [...current, taskId];
-      return { ...previous, [activeUser.id]: next };
-    });
-  };
 
   return (
     <main className="min-h-screen bg-slate-100 py-6">
@@ -254,7 +257,7 @@ export default function App() {
             <GitBranchFlowCard />
           </div>
           <div className="has-tooltip xl:col-span-6" data-tooltip="Task workspace with hover preview cards">
-            <TodoList tasks={tasks} onToggleTask={toggleTask} gitUsername={activeUser.gitUsername} />
+            <TodoList tasks={tasks} gitUsername={activeUser.gitUsername} />
           </div>
           <div className="has-tooltip space-y-4 xl:col-span-3" data-tooltip="Route checklist and workflow guidance">
             <div className="has-tooltip rounded-xl border border-gray-200 bg-white p-4 text-sm shadow-sm" data-tooltip="Backend endpoints trainees will use">

@@ -1,5 +1,6 @@
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -58,6 +59,25 @@ def _derive_git_username(name: str, email: str) -> str:
     return cleaned or "working.user"
 
 
+def _run_task_check(task_id: int) -> dict:
+    task_label = f"{task_id:02d}"
+    try:
+        result = subprocess.run(
+            [sys.executable, "check.py", "--task", task_label],
+            cwd=PROJECT_ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=30,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {"taskId": task_id, "passed": False, "output": str(exc)}
+
+    output = f"{result.stdout}\n{result.stderr}".strip()
+    passed = result.returncode == 0 and "Result: PASS" in result.stdout
+    return {"taskId": task_id, "passed": passed, "output": output}
+
+
 @app.get("/git-user", tags=["General"])
 def get_git_user():
     git_name = _read_git_config("user.name")
@@ -68,6 +88,13 @@ def get_git_user():
         "email": git_email,
         "username": git_username,
     }
+
+
+@app.get("/task-validations", tags=["General"])
+def get_task_validations():
+    results = [_run_task_check(task_id) for task_id in range(1, 21)]
+    passed_task_ids = [item["taskId"] for item in results if item["passed"]]
+    return {"passedTaskIds": passed_task_ids, "results": results}
 
 
 @app.post("/todos", tags=["Todos"])

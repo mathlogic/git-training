@@ -9,7 +9,7 @@ export default function TraineeCard({ trainee, gitUsername, gitEmail, branchName
   const currentTool = trainee?.favoriteTool || favoriteTool;
   const currentGitUser = gitUsername || (trainee?.id || "your.git.user");
   const currentGitEmail = gitEmail || (trainee?.gitEmail || email);
-  const currentBranch = branchName || `trainee/${currentGitUser}/task-xx`;
+  const currentBranch = branchName || `trainee/${currentGitUser}`;
   const initials = currentName.trim().slice(0, 2).toUpperCase();
 
   return (
