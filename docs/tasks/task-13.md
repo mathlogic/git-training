@@ -20,15 +20,15 @@ If the hint file does not exist in your local repository, create it and apply th
 1. Checkout your workspace branch and pull latest changes:
    - `git checkout workspace/<your-name>`
    - `git pull origin workspace/<your-name>`
-2. Create your task branch: `git checkout -b trainee/<your-name>/task-13`
+2. Switch to your trainee branch: `git checkout trainee/<your-name>`
 3. Update `playground/releases/hotfix-note.txt` using the hint at line `1`.
 4. Complete the task requirement: Cherry-pick trainer hotfix commit.
 5. Run local validation: `python check.py --task 13`
 6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push origin trainee/<your-name>/task-13`
+7. Push branch: `git push -u origin trainee/<your-name>`
 
 ## Expected Deliverable
-- Branch exists: `trainee/<your-name>/task-13`
+- Branch exists: `trainee/<your-name>`
 - File updated correctly: `playground/releases/hotfix-note.txt` (line 1)
 - Task outcome achieved: Cherry-pick trainer hotfix commit.
 - Clean commit history with meaningful message(s)
@@ -39,6 +39,7 @@ python check.py --task 13
 ```
 
 ## Submission (GitHub)
-- Source branch: `trainee/<your-name>/task-13`
+- Source branch: `trainee/<your-name>`
 - Target branch: `workspace/<your-name>`
 - Open PR with summary + evidence (commands/output where relevant)
+

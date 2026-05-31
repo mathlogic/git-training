@@ -20,15 +20,15 @@ If the hint file does not exist in your local repository, create it and apply th
 1. Checkout your workspace branch and pull latest changes:
    - `git checkout workspace/<your-name>`
    - `git pull origin workspace/<your-name>`
-2. Create your task branch: `git checkout -b trainee/<your-name>/task-14`
+2. Switch to your trainee branch: `git checkout trainee/<your-name>`
 3. Update `playground/ui/notice.txt` using the hint at line `2`.
 4. Complete the task requirement: Revert wrong change with git revert.
 5. Run local validation: `python check.py --task 14`
 6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push origin trainee/<your-name>/task-14`
+7. Push branch: `git push -u origin trainee/<your-name>`
 
 ## Expected Deliverable
-- Branch exists: `trainee/<your-name>/task-14`
+- Branch exists: `trainee/<your-name>`
 - File updated correctly: `playground/ui/notice.txt` (line 2)
 - Task outcome achieved: Revert wrong change with git revert.
 - Clean commit history with meaningful message(s)
@@ -39,6 +39,7 @@ python check.py --task 14
 ```
 
 ## Submission (GitHub)
-- Source branch: `trainee/<your-name>/task-14`
+- Source branch: `trainee/<your-name>`
 - Target branch: `workspace/<your-name>`
 - Open PR with summary + evidence (commands/output where relevant)
+
