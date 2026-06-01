@@ -1,45 +1,52 @@
-# Task 02 - Git identity
+# Task 02 - Record Git Identity
 
-## Objective
-Record git config user.name and user.email.
+## Goal
+Record `git config` name and email in `trainee/checkpoints/task-02.md`.
 
-## Task Info
-- Code: `T02`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Git config
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open terminal in project root and run:
+   - `git config --get user.name`
+   - `git config --get user.email`
+   - Create or open `trainee/checkpoints/task-02.md`.
+3. Add Given Text
+   - Add this format with your real values:
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-02.md`
-- Line: `2`
-- Required change: Record git config user.name and user.email.
+```text
+Task 02
+Name: Your Name
+Email: your@email.com
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+   - Example:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `trainee/checkpoints/task-02.md` using the hint at line `2`.
-4. Complete the task requirement: Record git config user.name and user.email.
-5. Run local validation: `python check.py --task 02`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
+```text
+Task 02
+Name: Suraj Kumar
+Email: suraj@gmail.com
+```
 
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-02.md` (line 2)
-- Task outcome achieved: Record git config user.name and user.email.
-- Clean commit history with meaningful message(s)
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run:
 
-## Validation
 ```bash
 python check.py --task 02
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add trainee/checkpoints/task-02.md`
+   - `git commit -m "task-02: record git identity"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 02 Completed` is shown.
 

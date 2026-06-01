@@ -1,45 +1,48 @@
-# Task 16 - Bisect
+﻿# Task 16 - Bisect
 
-## Objective
-Identify bad commit hash using bisect.
+## Goal
+Find bad commit hash using `git bisect`.
 
-## Task Info
-- Code: `T16`
-- Phase: Advanced Optional
-- Points: 5
-- Git Concept: Bisect
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open `playground/debug/bisect-log.txt`.
+3. Add Given Text
+   - Add:
 
-## Hint (File + Line)
-- File: `playground/debug/bisect-log.txt`
-- Line: `1`
-- Required change: Identify bad commit hash using bisect.
+```text
+Task 16
+Bad commit: <commit-hash>
+Found using git bisect
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run bisect flow in terminal:
+   - `git bisect start`
+   - `git bisect bad`
+   - `git bisect good <known-good-commit-hash>`
+   - At each step run your bug check and mark:
+   - `git bisect good` or `git bisect bad`
+   - After bad commit is identified, run:
+   - `git bisect reset`
+   - Then validate:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `playground/debug/bisect-log.txt` using the hint at line `1`.
-4. Complete the task requirement: Identify bad commit hash using bisect.
-5. Run local validation: `python check.py --task 16`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `playground/debug/bisect-log.txt` (line 1)
-- Task outcome achieved: Identify bad commit hash using bisect.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 16
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add playground/debug/bisect-log.txt`
+   - `git commit -m "task-16: record bisect result"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 16 Completed` is shown.

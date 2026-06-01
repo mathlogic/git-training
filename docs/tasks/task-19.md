@@ -1,45 +1,38 @@
-# Task 19 - Release branch flow
+﻿# Task 19 - Release Branch Flow
 
-## Objective
-Create release/<version> flow commit.
+## Goal
+Record release flow evidence for your branch.
 
-## Task Info
-- Code: `T19`
-- Phase: Advanced Optional
-- Points: 5
-- Git Concept: Release workflow
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open `playground/releases/version.txt`.
+3. Add Given Text
+   - Add release branch marker:
 
-## Hint (File + Line)
-- File: `playground/releases/version.txt`
-- Line: `1`
-- Required change: Create release/<version> flow commit.
+```text
+release/1.0.0
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `playground/releases/version.txt` using the hint at line `1`.
-4. Complete the task requirement: Create release/<version> flow commit.
-5. Run local validation: `python check.py --task 19`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `playground/releases/version.txt` (line 1)
-- Task outcome achieved: Create release/<version> flow commit.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 19
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add playground/releases/version.txt`
+   - `git commit -m "task-19: add release flow marker"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 19 Completed` is shown.

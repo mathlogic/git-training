@@ -1,45 +1,43 @@
-# Task 13 - Cherry-pick
+﻿# Task 13 - Cherry-pick
 
-## Objective
-Cherry-pick trainer hotfix commit.
+## Goal
+Cherry-pick trainer hotfix commit into your trainee branch.
 
-## Task Info
-- Code: `T13`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Cherry-pick
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - In terminal, run:
+   - `git checkout trainee/<your-name>`
+   - `git cherry-pick <trainer-hotfix-commit-hash>`
+   - Open `playground/releases/hotfix-note.txt`.
+3. Add Given Text
+   - Ensure line 1 has a hotfix note.
+   - If needed, use:
 
-## Hint (File + Line)
-- File: `playground/releases/hotfix-note.txt`
-- Line: `1`
-- Required change: Cherry-pick trainer hotfix commit.
+```text
+Trainer hotfix cherry-picked in Task 13
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `playground/releases/hotfix-note.txt` using the hint at line `1`.
-4. Complete the task requirement: Cherry-pick trainer hotfix commit.
-5. Run local validation: `python check.py --task 13`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `playground/releases/hotfix-note.txt` (line 1)
-- Task outcome achieved: Cherry-pick trainer hotfix commit.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 13
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - `git cherry-pick` usually creates commit automatically.
+   - If you edited file manually after cherry-pick, run:
+   - `git add playground/releases/hotfix-note.txt`
+   - `git commit -m "task-13: finalize cherry-pick note"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 13 Completed` is shown.

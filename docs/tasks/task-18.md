@@ -1,45 +1,48 @@
-# Task 18 - Autosquash cleanup
+﻿# Task 18 - Autosquash Cleanup
 
-## Objective
-Use fixup commit + autosquash rebase.
+## Goal
+Use fixup commit and autosquash rebase for clean history.
 
-## Task Info
-- Code: `T18`
-- Phase: Advanced Optional
-- Points: 5
-- Git Concept: Autosquash
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `trainee/checkpoints`.
+   - Create or open `trainee/checkpoints/task-18.md`.
+3. Add Given Text
+   - Add:
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-18.md`
-- Line: `3`
-- Required change: Use fixup commit + autosquash rebase.
+```text
+Task 18
+Fixup commit created
+Autosquash rebase completed
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run autosquash flow in terminal:
+   - `git add trainee/checkpoints/task-18.md`
+   - `git commit -m "task-18: base checkpoint"`
+   - Make a small correction in same file.
+   - `git add trainee/checkpoints/task-18.md`
+   - `git commit --fixup HEAD~1`
+   - `git rebase -i --autosquash HEAD~2`
+   - Then validate:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `trainee/checkpoints/task-18.md` using the hint at line `3`.
-4. Complete the task requirement: Use fixup commit + autosquash rebase.
-5. Run local validation: `python check.py --task 18`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-18.md` (line 3)
-- Task outcome achieved: Use fixup commit + autosquash rebase.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 18
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Rebase will finalize cleaned commit history.
+   - Check:
+   - `git log --oneline -5`
+7. Push
+   - Autosquash rewrites history, so run:
+   - `git push --force-with-lease`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 18 Completed` is shown.
