@@ -1,45 +1,49 @@
-# Task 12 - Squash history
+﻿# Task 12 - Squash History
 
-## Objective
-Squash 3 noisy commits into 1 clean commit.
+## Goal
+Squash multiple noisy commits into one clean commit.
 
-## Task Info
-- Code: `T12`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Interactive rebase
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `trainee/checkpoints`.
+   - Create or open `trainee/checkpoints/task-12.md`.
+3. Add Given Text
+   - Add:
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-12.md`
-- Line: `5`
-- Required change: Squash 3 noisy commits into 1 clean commit.
+```text
+Task 12
+History squashed
+Before: multiple commits
+After: one clean commit
+No WIP in message
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run squash flow in terminal:
+   - `git add trainee/checkpoints/task-12.md`
+   - `git commit -m "task-12: checkpoint update"`
+   - `git rebase -i HEAD~3`
+   - In editor: keep first commit as `pick`, change next commits to `squash`.
+   - Save and close editor.
+   - Then validate:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `trainee/checkpoints/task-12.md` using the hint at line `5`.
-4. Complete the task requirement: Squash 3 noisy commits into 1 clean commit.
-5. Run local validation: `python check.py --task 12`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-12.md` (line 5)
-- Task outcome achieved: Squash 3 noisy commits into 1 clean commit.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 12
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Interactive rebase creates final squashed commit.
+   - If needed, check:
+   - `git log --oneline -5`
+7. Push
+   - Squash rewrites history, so run:
+   - `git push --force-with-lease`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 12 Completed` is shown.

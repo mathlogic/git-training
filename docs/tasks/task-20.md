@@ -1,45 +1,43 @@
-# Task 20 - PR polish + evidence
+﻿# Task 20 - PR Polish and Evidence
 
-## Objective
-Final summary with command evidence.
+## Goal
+Create final summary with command evidence.
 
-## Task Info
-- Code: `T20`
-- Phase: Advanced Optional
-- Points: 5
-- Git Concept: PR quality
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `evidence`.
+   - Create or open `evidence/final-summary.md`.
+3. Add Given Text
+   - Add this template and fill with your real data:
 
-## Hint (File + Line)
-- File: `evidence/final-summary.md`
-- Line: `1`
-- Required change: Final summary with command evidence.
+```text
+Task 20 Final Summary
+Branch: trainee/<your-name>
+Validation commands run: python check.py --task 01 to 20
+PR link: <paste-your-pr-url>
+Notes: All mandatory tasks completed with clean commit messages
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `evidence/final-summary.md` using the hint at line `1`.
-4. Complete the task requirement: Final summary with command evidence.
-5. Run local validation: `python check.py --task 20`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `evidence/final-summary.md` (line 1)
-- Task outcome achieved: Final summary with command evidence.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 20
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add evidence/final-summary.md`
+   - `git commit -m "task-20: add final summary evidence"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 20 Completed` is shown.

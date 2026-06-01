@@ -1,45 +1,41 @@
-# Task 15 - Tagging
+﻿# Task 15 - Tagging
 
-## Objective
-Create annotated tag task-15-<name>.
+## Goal
+Create annotated tag `task-15-<your-name>`.
 
-## Task Info
-- Code: `T15`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Tagging
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open `playground/releases/version.txt`.
+3. Add Given Text
+   - Add line 1 as release marker:
 
-## Hint (File + Line)
-- File: `playground/releases/version.txt`
-- Line: `1`
-- Required change: Create annotated tag task-15-<name>.
+```text
+release/1.0.0
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Create annotated tag:
+   - `git tag -a task-15-<your-name> -m "Task 15 annotated tag"`
+   - Validate:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `playground/releases/version.txt` using the hint at line `1`.
-4. Complete the task requirement: Create annotated tag task-15-<name>.
-5. Run local validation: `python check.py --task 15`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `playground/releases/version.txt` (line 1)
-- Task outcome achieved: Create annotated tag task-15-<name>.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 15
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add playground/releases/version.txt`
+   - `git commit -m "task-15: add release version marker"`
+7. Push
+   - Run:
+   - `git push`
+   - `git push origin task-15-<your-name>`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 15 Completed` is shown.

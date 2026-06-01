@@ -1,45 +1,41 @@
-# Task 04 - .gitignore hygiene
+# Task 04 - Update .gitignore
 
-## Objective
-Add .env, *.log, .DS_Store.
+## Goal
+Add standard ignore rules in `.gitignore`.
 
-## Task Info
-- Code: `T04`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Repo hygiene
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open `.gitignore` from repository root.
+3. Add Given Text
+   - Add these lines if they are not already present:
 
-## Hint (File + Line)
-- File: `.gitignore`
-- Line: `1`
-- Required change: Add .env, *.log, .DS_Store.
+```text
+.env
+*.log
+.DS_Store
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `.gitignore` using the hint at line `1`.
-4. Complete the task requirement: Add .env, *.log, .DS_Store.
-5. Run local validation: `python check.py --task 04`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `.gitignore` (line 1)
-- Task outcome achieved: Add .env, *.log, .DS_Store.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 04
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add .gitignore`
+   - `git commit -m "task-04: add gitignore hygiene rules"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 04 Completed` is shown.
 
