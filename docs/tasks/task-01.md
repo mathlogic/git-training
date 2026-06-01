@@ -1,7 +1,7 @@
-# Task 01 - Clone + branch setup
+# Task 01 - Clone + Branch Setup
 
 ## Objective
-Create trainee branch and add branch name.
+Create trainee branch checkpoint evidence.
 
 ## Task Info
 - Code: `T01`
@@ -9,34 +9,43 @@ Create trainee branch and add branch name.
 - Points: 5
 - Git Concept: Branching basics
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-01.md`
-- Line: `1`
-- Required change: Create trainee branch and add branch name.
+## File To Create/Modify
+- `trainee/checkpoints/task-01.md`
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+## Content To Add
+Add this exact value on line 1 (replace `<your-name>`):
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
+```text
+trainee/<your-name>
+```
+
+## Manual VS Code Steps
+1. Open the repository in VS Code.
+2. In Explorer, open folder `trainee`.
+3. If folder `checkpoints` does not exist, create it in Explorer.
+4. Inside `checkpoints`, create file `task-01.md` if it does not exist.
+5. Open `task-01.md`.
+6. Enter your branch name on line 1, for example: `trainee/suraj.kumar`.
+7. Save the file.
+
+## Git Steps
+1. Checkout workspace branch and pull latest changes:
    - `git checkout workspace/<your-name>`
    - `git pull origin workspace/<your-name>`
-2. Create your trainee branch (one-time): `git checkout -b trainee/<your-name>`
-3. Update `trainee/checkpoints/task-01.md` using the hint at line `1`.
-4. Complete the task requirement: Create trainee branch and add branch name.
-5. Run local validation: `python check.py --task 01`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
+2. Create trainee branch (one-time):
+   - `git checkout -b trainee/<your-name>`
+3. Run validation:
+   - `python check.py --task 01`
+4. Commit with a clean message:
+   - `git add trainee/checkpoints/task-01.md`
+   - `git commit -m "task-01: add trainee branch checkpoint"`
+5. Push trainee branch:
+   - `git push -u origin trainee/<your-name>`
 
-## Expected Deliverable
+## Expected Result
 - Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-01.md` (line 1)
-- Task outcome achieved: Create trainee branch and add branch name.
-- Clean commit history with meaningful message(s)
-
-## Validation
-```bash
-python check.py --task 01
-```
+- `trainee/checkpoints/task-01.md` exists and line 1 matches current trainee branch.
+- Validation output contains `Result: PASS`.
 
 ## Submission (GitHub)
 - Source branch: `trainee/<your-name>`

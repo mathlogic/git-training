@@ -17,7 +17,8 @@ const TASK_NOTES = {
     steps: [
       "Switch to your workspace branch and pull latest updates.",
       "Create your one long-lived branch as trainee/<your-name>.",
-      "Update trainee/checkpoints/task-01.md line 1 with the current branch name.",
+      "Open trainee/checkpoints in VS Code Explorer; if folder or file is missing, create checkpoints/task-01.md manually.",
+      "Write your exact current branch name on line 1 (example: trainee/suraj.kumar).",
       "Run validation before commit and push."
     ],
     checks: [

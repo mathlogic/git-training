@@ -36,6 +36,9 @@ export default function TaskDetailsDrawer({ task, gitUsername, isOpen, onClose }
           <section>
             <h4 className="mb-1 font-semibold text-slate-800">Hint (File + Line)</h4>
             <p className="rounded-md bg-slate-50 px-3 py-2 font-mono text-xs text-slate-700">{task.hintFile} : line {task.hintLine}</p>
+            <p className="mt-2 text-xs text-slate-600">
+              If this path does not exist yet, create the required folder/file manually in VS Code Explorer, then add the expected content.
+            </p>
           </section>
 
           <section>
