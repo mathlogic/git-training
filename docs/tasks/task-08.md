@@ -1,45 +1,42 @@
-# Task 08 - Merge conflict resolve
+﻿# Task 08 - Merge Conflict Resolution
 
-## Objective
-Resolve prepared conflict cleanly.
+## Goal
+Resolve prepared merge conflict cleanly.
 
-## Task Info
-- Code: `T08`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Conflict resolution
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open `playground/config/app-mode.txt`.
+3. Add Given Text
+   - Resolve conflict and keep clean content.
+   - If needed, use this clean version:
 
-## Hint (File + Line)
-- File: `playground/config/app-mode.txt`
-- Line: `2`
-- Required change: Resolve prepared conflict cleanly.
+```text
+Task 08
+Conflict resolved cleanly
+No conflict markers remain
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Confirm no markers like `<<<<<<<`, `=======`, `>>>>>>>` remain in files.
+   - Run:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `playground/config/app-mode.txt` using the hint at line `2`.
-4. Complete the task requirement: Resolve prepared conflict cleanly.
-5. Run local validation: `python check.py --task 08`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `playground/config/app-mode.txt` (line 2)
-- Task outcome achieved: Resolve prepared conflict cleanly.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 08
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add playground/config/app-mode.txt`
+   - `git commit -m "task-08: resolve merge conflict"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 08 Completed` is shown.

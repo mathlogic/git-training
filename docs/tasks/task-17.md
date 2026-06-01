@@ -1,45 +1,50 @@
-# Task 17 - Reflog recovery
+﻿# Task 17 - Reflog Recovery
 
-## Objective
-Recover from wrong reset using reflog.
+## Goal
+Recover from wrong reset using `git reflog`.
 
-## Task Info
-- Code: `T17`
-- Phase: Advanced Optional
-- Points: 5
-- Git Concept: Reflog
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `trainee/checkpoints`.
+   - Create or open `trainee/checkpoints/task-17.md`.
+3. Add Given Text
+   - Add:
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-17.md`
-- Line: `4`
-- Required change: Recover from wrong reset using reflog.
+```text
+Task 17
+Recovery completed via reflog
+Recovered commit: <commit-hash>
+Branch state restored
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run recovery flow in terminal:
+   - `git reflog -10`
+   - Find the commit before wrong reset.
+   - Recover using one method:
+   - `git reset --hard <recover-commit-hash>`
+   - or `git cherry-pick <recover-commit-hash>`
+   - Then validate:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `trainee/checkpoints/task-17.md` using the hint at line `4`.
-4. Complete the task requirement: Recover from wrong reset using reflog.
-5. Run local validation: `python check.py --task 17`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-17.md` (line 4)
-- Task outcome achieved: Recover from wrong reset using reflog.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 17
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add trainee/checkpoints/task-17.md`
+   - `git commit -m "task-17: add reflog recovery checkpoint"`
+7. Push
+   - If history was rewritten, run:
+   - `git push --force-with-lease`
+   - Otherwise run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 17 Completed` is shown.

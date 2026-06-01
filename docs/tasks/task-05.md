@@ -1,45 +1,42 @@
-# Task 05 - Commit message quality
+# Task 05 - Commit Quality Checkpoint
 
-## Objective
-Use clean commit format (no WIP).
+## Goal
+Create final checkpoint file for commit message quality.
 
-## Task Info
-- Code: `T05`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Commit standards
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `trainee/checkpoints`.
+   - Create or open `trainee/checkpoints/task-05.md`.
+3. Add Given Text
+   - Add exactly:
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-05.md`
-- Line: `3`
-- Required change: Use clean commit format (no WIP).
+```text
+Task 05
+Commit message quality
+No WIP used
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `trainee/checkpoints/task-05.md` using the hint at line `3`.
-4. Complete the task requirement: Use clean commit format (no WIP).
-5. Run local validation: `python check.py --task 05`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-05.md` (line 3)
-- Task outcome achieved: Use clean commit format (no WIP).
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 05
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add trainee/checkpoints/task-05.md`
+   - `git commit -m "task-05: add commit quality checkpoint"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 05 Completed` is shown.
 
