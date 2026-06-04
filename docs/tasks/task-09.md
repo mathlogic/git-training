@@ -26,6 +26,7 @@ Task 09 stash workflow completed
    - `git stash pop`
    - Then run:
 
+   
 ```bash
 python check.py --task 09
 ```
