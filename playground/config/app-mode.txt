@@ -1,0 +1,2 @@
+Conflict resolved cleanly
+No conflict markers remain
