@@ -1,45 +1,40 @@
-# Task 03 - Basic commit
+# Task 03 - Update Title
 
-## Objective
-Change one title line and commit.
+## Goal
+Update title text in `playground/ui/title.txt`.
 
-## Task Info
-- Code: `T03`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Add, commit, push
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `playground`, then `ui`.
+   - Create or open `playground/ui/title.txt`.
+3. Add Given Text
+   - Replace all content with exactly:
 
-## Hint (File + Line)
-- File: `playground/ui/title.txt`
-- Line: `1`
-- Required change: Change one title line and commit.
+```text
+Git and GitHub Training Lab - Task 03
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `playground/ui/title.txt` using the hint at line `1`.
-4. Complete the task requirement: Change one title line and commit.
-5. Run local validation: `python check.py --task 03`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `playground/ui/title.txt` (line 1)
-- Task outcome achieved: Change one title line and commit.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 03
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add playground/ui/title.txt`
+   - `git commit -m "task-03: update title line"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 03 Completed` is shown.
 

@@ -1,45 +1,49 @@
-# Task 07 - Update from base
+﻿# Task 07 - Update from Base (Rebase)
 
-## Objective
-Rebase task branch on updated workspace.
+## Goal
+Rebase your trainee branch on latest workspace branch.
 
-## Task Info
-- Code: `T07`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Rebase
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `trainee/checkpoints`.
+   - Create or open `trainee/checkpoints/task-07.md`.
+3. Add Given Text
+   - Add:
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-07.md`
-- Line: `4`
-- Required change: Rebase task branch on updated workspace.
+```text
+Task 07
+Rebase completed
+Base branch: workspace/<your-name>
+No unresolved conflicts
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - In terminal, run rebase flow first:
+   - `git checkout trainee/<your-name>`
+   - `git fetch origin`
+   - `git rebase origin/workspace/<your-name>`
+   - If conflict appears, resolve file, then run:
+   - `git add <resolved-file>`
+   - `git rebase --continue`
+   - Then validate:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `trainee/checkpoints/task-07.md` using the hint at line `4`.
-4. Complete the task requirement: Rebase task branch on updated workspace.
-5. Run local validation: `python check.py --task 07`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-07.md` (line 4)
-- Task outcome achieved: Rebase task branch on updated workspace.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 07
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add trainee/checkpoints/task-07.md`
+   - `git commit -m "task-07: add rebase checkpoint"`
+7. Push
+   - Run:
+   - `git push --force-with-lease`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 07 Completed` is shown.

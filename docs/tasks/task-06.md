@@ -1,45 +1,44 @@
-# Task 06 - Push + PR basics
+﻿# Task 06 - Push + PR Basics
 
-## Objective
-Push branch and open PR.
+## Goal
+Push your trainee branch and open a pull request.
 
-## Task Info
-- Code: `T06`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Pull request flow
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `trainee/checkpoints`.
+   - Create or open `trainee/checkpoints/task-06.md`.
+3. Add Given Text
+   - Add:
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-06.md`
-- Line: `2`
-- Required change: Push branch and open PR.
+```text
+Task 06
+Branch pushed to origin
+PR opened from trainee/<your-name> to workspace/<your-name>
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `trainee/checkpoints/task-06.md` using the hint at line `2`.
-4. Complete the task requirement: Push branch and open PR.
-5. Run local validation: `python check.py --task 06`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-06.md` (line 2)
-- Task outcome achieved: Push branch and open PR.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 06
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add trainee/checkpoints/task-06.md`
+   - `git commit -m "task-06: add push and PR checkpoint"`
+7. Push
+   - Run:
+   - `git push -u origin trainee/<your-name>`
+   - Open GitHub and create PR:
+   - Source: `trainee/<your-name>`
+   - Target: `workspace/<your-name>`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 06 Completed` is shown.

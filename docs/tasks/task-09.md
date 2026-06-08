@@ -1,45 +1,43 @@
-# Task 09 - Stash workflow
+﻿# Task 09 - Stash Workflow
 
-## Objective
-Stash WIP, switch, return, apply stash.
+## Goal
+Use stash to pause work, switch branch, and restore changes.
 
-## Task Info
-- Code: `T09`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Stash
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open `playground/ui/subtitle.txt`.
+3. Add Given Text
+   - Add or update line 1 with:
 
-## Hint (File + Line)
-- File: `playground/ui/subtitle.txt`
-- Line: `1`
-- Required change: Stash WIP, switch, return, apply stash.
+```text
+Task 09 stash workflow completed
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
-
-## Steps
-1. Checkout your workspace branch and pull latest changes:
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Use stash flow in terminal:
+   - `git stash push -m "task-09-wip"`
    - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `playground/ui/subtitle.txt` using the hint at line `1`.
-4. Complete the task requirement: Stash WIP, switch, return, apply stash.
-5. Run local validation: `python check.py --task 09`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
+   - `git checkout trainee/<your-name>`
+   - `git stash pop`
+   - Then run:
 
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `playground/ui/subtitle.txt` (line 1)
-- Task outcome achieved: Stash WIP, switch, return, apply stash.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 09
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - Run:
+   - `git add playground/ui/subtitle.txt`
+   - `git commit -m "task-09: complete stash workflow"`
+7. Push
+   - Run:
+   - `git push`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 09 Completed` is shown.

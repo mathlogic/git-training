@@ -1,45 +1,46 @@
-# Task 11 - Amend commit
+﻿# Task 11 - Amend Commit
 
-## Objective
-Fix previous commit message via amend.
+## Goal
+Fix previous commit message using `git commit --amend`.
 
-## Task Info
-- Code: `T11`
-- Phase: Core Mandatory
-- Points: 5
-- Git Concept: Amend
+## Simple Pattern
+1. Open Folder
+   - Open this project in VS Code:
+   - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
+2. Create/Open File
+   - Open folder `trainee/checkpoints`.
+   - Create or open `trainee/checkpoints/task-11.md`.
+3. Add Given Text
+   - Add:
 
-## Hint (File + Line)
-- File: `trainee/checkpoints/task-11.md`
-- Line: `3`
-- Required change: Fix previous commit message via amend.
+```text
+Task 11
+Commit amended
+Final message is clean (no WIP)
+```
 
-If the hint file does not exist in your local repository, create it and apply the required update at the referenced line.
+4. Save
+   - Press `Ctrl + S`.
+5. Run Validation
+   - Run amend flow in terminal:
+   - `git add trainee/checkpoints/task-11.md`
+   - `git commit -m "task-11: temp message"`
+   - `git commit --amend -m "task-11: fix commit message via amend"`
+   - Then validate:
 
-## Steps
-1. Checkout your workspace branch and pull latest changes:
-   - `git checkout workspace/<your-name>`
-   - `git pull origin workspace/<your-name>`
-2. Switch to your trainee branch: `git checkout trainee/<your-name>`
-3. Update `trainee/checkpoints/task-11.md` using the hint at line `3`.
-4. Complete the task requirement: Fix previous commit message via amend.
-5. Run local validation: `python check.py --task 11`
-6. Commit your changes with a clear commit message (no WIP text).
-7. Push branch: `git push -u origin trainee/<your-name>`
-
-## Expected Deliverable
-- Branch exists: `trainee/<your-name>`
-- File updated correctly: `trainee/checkpoints/task-11.md` (line 3)
-- Task outcome achieved: Fix previous commit message via amend.
-- Clean commit history with meaningful message(s)
-
-## Validation
 ```bash
 python check.py --task 11
 ```
 
-## Submission (GitHub)
-- Source branch: `trainee/<your-name>`
-- Target branch: `workspace/<your-name>`
-- Open PR with summary + evidence (commands/output where relevant)
-
+   - Expected: `Result: PASS`
+6. Commit
+   - If you already amended in step 5, no extra commit is needed.
+   - If file changed again, run:
+   - `git add trainee/checkpoints/task-11.md`
+   - `git commit --amend --no-edit`
+7. Push
+   - Because amend rewrites commit history, run:
+   - `git push --force-with-lease`
+8. Refresh UI
+   - Open `http://localhost:5173` and refresh the page.
+   - Confirm `Task 11 Completed` is shown.
