@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Trainer hotfix cherry-picked in Task 13
+=======
+Trainer hotfix cherry-picked in Task 13
+>>>>>>> 993e456 (trainer: add task 13 hotfix note)
