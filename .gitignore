@@ -221,3 +221,9 @@ __marimo__/
 node_modules/
 frontend/node_modules/
 frontend/dist/
+
+```text
+.env
+*.log
+.DS_Store
+```
