@@ -213,7 +213,7 @@ python check.py --task 08
 git stash
 git checkout workspace/<your-name>
 git checkout trainee/<your-name>
-git stash pop
+git stash apply
 # finalize subtitle update
 python check.py --task 09
 ```

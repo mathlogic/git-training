@@ -166,8 +166,8 @@ export default function App() {
       tip: "Temporarily save uncommitted work so you can switch branches safely."
     },
     {
-      command: "git stash pop",
-      tip: "Restore the most recent stashed changes back into your working tree."
+      command: "git stash apply",
+      tip: "Restore the most recent stashed changes while keeping stash evidence for validation."
     },
     {
       command: "git cherry-pick <commit-hash>",

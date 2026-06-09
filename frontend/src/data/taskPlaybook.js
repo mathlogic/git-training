@@ -372,7 +372,7 @@ function commandsForTask(taskId, context) {
       return [
         { label: "Stash WIP", command: "git stash push -m \"task-09-wip\"" },
         { label: "List Stashes", command: "git stash list" },
-        { label: "Apply Stash", command: "git stash pop" },
+        { label: "Apply Stash", command: "git stash apply" },
         { label: "Run Validation", command: validate }
       ];
     case 10:
