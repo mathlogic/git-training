@@ -1,2 +1,2 @@
-mode
-development
+Conflict resolved cleanly
+No conflict markers remain
