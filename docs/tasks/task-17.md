@@ -26,9 +26,9 @@ Branch state restored
    - Run recovery flow in terminal:
    - `git reflog -10`
    - Find the commit before wrong reset.
-   - Recover using one method:
-   - `git reset --hard <recover-commit-hash>`
-   - or `git cherry-pick <recover-commit-hash>`
+   - Recover safely:
+   - `git cherry-pick <recover-commit-hash>`
+   - Avoid destructive reset commands unless your trainer is present.
    - Then validate:
 
 ```bash
@@ -41,10 +41,8 @@ python check.py --task 17
    - `git add trainee/checkpoints/task-17.md`
    - `git commit -m "task-17: add reflog recovery checkpoint"`
 7. Push
-   - If history was rewritten, run:
-   - `git push --force-with-lease`
-   - Otherwise run:
    - `git push`
+   - Use force push only if your trainer supervised a history rewrite.
 8. Refresh UI
    - Open `http://localhost:5173` and refresh the page.
    - Confirm `Task 17 Completed` is shown.

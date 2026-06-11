@@ -71,10 +71,10 @@ git pull origin workspace/<username>
 ### Step 2: Create one trainee branch
 
 ```bash
-git checkout -b trainee/<username>/batch-1
+git checkout -b trainee/<username>
 ```
 
-Use the trainer-approved branch suffix if different from `batch-1`.
+Use exactly `trainee/<username>` unless your trainer explicitly changes the checker rules.
 
 ### Step 3: Complete all tasks on this same branch
 
@@ -99,13 +99,13 @@ Repeat for all assigned tasks on the same branch.
 ### Step 4: Push regularly
 
 ```bash
-git push -u origin trainee/<username>/batch-1
+git push -u origin trainee/<username>
 ```
 
 ### Step 5: Open one final PR
 
 Create one PR:
-- From: `trainee/<username>/batch-1`
+- From: `trainee/<username>`
 - To: `workspace/<username>`
 
 Suggested title:
