@@ -18,7 +18,11 @@ release/1.0.0
 
 4. Save
    - Press `Ctrl + S`.
-5. Run Validation
+5. Commit
+   - Run:
+   - `git add playground/releases/version.txt`
+   - `git commit -m "task-15: add release version marker"`
+6. Run Validation
    - Create annotated tag:
    - `git tag -a task-15-<your-name> -m "Task 15 annotated tag"`
    - Validate:
@@ -28,10 +32,6 @@ python check.py --task 15
 ```
 
    - Expected: `Result: PASS`
-6. Commit
-   - Run:
-   - `git add playground/releases/version.txt`
-   - `git commit -m "task-15: add release version marker"`
 7. Push
    - Run:
    - `git push`

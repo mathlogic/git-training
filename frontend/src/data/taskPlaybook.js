@@ -372,12 +372,13 @@ function commandsForTask(taskId, context) {
       return [
         { label: "Stash WIP", command: "git stash push -m \"task-09-wip\"" },
         { label: "List Stashes", command: "git stash list" },
-        { label: "Apply Stash", command: "git stash pop" },
+        { label: "Apply Stash", command: "git stash apply" },
         { label: "Run Validation", command: validate }
       ];
     case 10:
       return [
         { label: "Restore File", command: "git restore playground/docs/faq.txt" },
+        { label: "If Unknown Path", command: "create playground/docs/faq.txt manually" },
         { label: "Check Tracking", command: "git ls-files --error-unmatch playground/docs/faq.txt" },
         { label: "Run Validation", command: validate }
       ];
@@ -407,9 +408,11 @@ function commandsForTask(taskId, context) {
       ];
     case 15:
       return [
+        { label: "Stage Version", command: "git add playground/releases/version.txt" },
+        { label: "Commit Version", command: "git commit -m \"task-15: add release version marker\"" },
         { label: "Create Annotated Tag", command: "git tag -a task-15-<name> -m \"Task 15 tag\"" },
-        { label: "Push Tag", command: "git push origin task-15-<name>" },
-        { label: "Run Validation", command: validate }
+        { label: "Run Validation", command: validate },
+        { label: "Push Tag", command: "git push origin task-15-<name>" }
       ];
     case 16:
       return [
@@ -422,7 +425,7 @@ function commandsForTask(taskId, context) {
     case 17:
       return [
         { label: "Reflog History", command: "git reflog -n 20" },
-        { label: "Recover State", command: "git reset --soft <recovery-hash>" },
+        { label: "Recover Commit", command: "git cherry-pick <recovery-hash>" },
         { label: "Run Validation", command: validate }
       ];
     case 18:

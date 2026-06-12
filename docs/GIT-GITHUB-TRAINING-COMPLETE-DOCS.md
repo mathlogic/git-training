@@ -213,7 +213,7 @@ python check.py --task 08
 git stash
 git checkout workspace/<your-name>
 git checkout trainee/<your-name>
-git stash pop
+git stash apply
 # finalize subtitle update
 python check.py --task 09
 ```
@@ -223,9 +223,9 @@ python check.py --task 09
 - Checker evidence: file is tracked in Git
 - Quick commands:
 ```bash
-# if deleted accidentally
+# if deleted after being tracked earlier
 git restore playground/docs/faq.txt
-# or: git checkout -- playground/docs/faq.txt
+# if Git says the path is unknown, create the file manually with FAQ content
 python check.py --task 10
 ```
 
@@ -274,9 +274,12 @@ python check.py --task 14
 - Checker evidence: tag exists with prefix `task-15-`
 - Quick commands:
 ```bash
+git add playground/releases/version.txt
+git commit -m "task-15: add release version marker"
 git tag -a task-15-<name> -m "Task 15 annotated tag"
-git push origin task-15-<name>
 python check.py --task 15
+git push
+git push origin task-15-<name>
 ```
 
 ### T16 - Bisect
@@ -302,7 +305,7 @@ python check.py --task 16
 git reset --soft HEAD~1
 # recover using reflog
 git reflog
-git reset --soft <recovery-hash>
+git cherry-pick <recovery-hash>
 python check.py --task 17
 ```
 
