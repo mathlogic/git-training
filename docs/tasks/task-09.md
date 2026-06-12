@@ -23,7 +23,8 @@ Task 09 stash workflow completed
    - `git stash push -m "task-09-wip"`
    - `git checkout workspace/<your-name>`
    - `git checkout trainee/<your-name>`
-   - `git stash pop`
+   - `git stash apply`
+   - Use `apply` here so the stash entry remains available for validation.
    - Then run:
 
 ```bash

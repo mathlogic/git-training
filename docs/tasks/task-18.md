@@ -27,7 +27,7 @@ Autosquash rebase completed
    - `git commit -m "task-18: base checkpoint"`
    - Make a small correction in same file.
    - `git add trainee/checkpoints/task-18.md`
-   - `git commit --fixup HEAD~1`
+   - `git commit --fixup HEAD`
    - `git rebase -i --autosquash HEAD~2`
    - Then validate:
 
