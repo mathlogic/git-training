@@ -251,19 +251,22 @@ const TASK_NOTES = {
     ]
   },
   16: {
-    summary: "Use bisect to isolate a bad commit and record evidence in bisect log file.",
+    summary: "Use Git history search to find when TASK_DEFS was introduced in check.py.",
     steps: [
-      "Start bisect with known good and bad points.",
-      "Mark commits good/bad until culprit is found.",
-      "Reset bisect mode.",
-      "Write identified bad commit evidence in playground/debug/bisect-log.txt."
+      "Run git log -S \"TASK_DEFS\" -- check.py.",
+      "Copy the matching commit hash and commit message.",
+      "Create playground/debug/history-detective.md.",
+      "Record the command, commit hash, commit message, and a short learning note."
     ],
     checks: [
-      "Bisect evidence file exists and contains expected content."
+      "History detective evidence file exists.",
+      "Evidence includes the git log -S command.",
+      "Recorded hash matches the TASK_DEFS history search result."
     ],
     pitfalls: [
-      "Forgetting git bisect reset after investigation.",
-      "Recording vague notes without commit hash evidence."
+      "Using normal git log without -S.",
+      "Recording a commit hash from another file or search.",
+      "Leaving the commit message blank."
     ]
   },
   17: {
@@ -416,11 +419,11 @@ function commandsForTask(taskId, context) {
       ];
     case 16:
       return [
-        { label: "Bisect Start", command: "git bisect start" },
-        { label: "Mark Bad", command: "git bisect bad" },
-        { label: "Mark Good", command: "git bisect good <good-commit-hash>" },
-        { label: "Bisect Reset", command: "git bisect reset" },
-        { label: "Run Validation", command: validate }
+        { label: "Search History", command: 'git log -S "TASK_DEFS" -- check.py' },
+        { label: "Open Evidence File", command: "code playground/debug/history-detective.md" },
+        { label: "Run Validation", command: validate },
+        { label: "Stage Evidence", command: "git add playground/debug/history-detective.md" },
+        { label: "Commit Evidence", command: 'git commit -m "task-16: add history detective evidence"' }
       ];
     case 17:
       return [

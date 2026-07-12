@@ -1,48 +1,60 @@
-﻿# Task 16 - Bisect
+# Task 16 - Git History Detective
 
 ## Goal
-Find bad commit hash using `git bisect`.
+Find when `TASK_DEFS` was introduced in `check.py` using Git history search.
 
 ## Simple Pattern
 1. Open Folder
    - Open this project in VS Code:
    - `C:\Users\Suraj Kumar\Desktop\Training_session2026\Demo\git-training`
-2. Create/Open File
-   - Open `playground/debug/bisect-log.txt`.
-3. Add Given Text
-   - Add:
+2. Run History Search
+   - Run:
 
-```text
-Task 16
-Bad commit: <commit-hash>
-Found using git bisect
+```bash
+git log -S "TASK_DEFS" -- check.py
 ```
 
-4. Save
+   - Copy the commit hash and commit message from the result.
+3. Create/Open File
+   - Open folder `playground/debug`.
+   - If `debug` does not exist, create it.
+   - Create or open `playground/debug/history-detective.md`.
+4. Add Given Text
+   - Fill this template with the real commit hash and message:
+
+```text
+Task 16 - Git History Detective
+
+Command used:
+git log -S "TASK_DEFS" -- check.py
+
+Commit hash found:
+<commit-hash>
+
+Commit message:
+<commit-message>
+
+What I learned:
+I used Git history search to find when a specific code block was introduced.
+```
+
+5. Save
    - Press `Ctrl + S`.
-5. Run Validation
-   - Run bisect flow in terminal:
-   - `git bisect start`
-   - `git bisect bad`
-   - `git bisect good <known-good-commit-hash>`
-   - At each step run your bug check and mark:
-   - `git bisect good` or `git bisect bad`
-   - After bad commit is identified, run:
-   - `git bisect reset`
-   - Then validate:
+6. Run Validation
+   - Run:
 
 ```bash
 python check.py --task 16
 ```
 
    - Expected: `Result: PASS`
-6. Commit
+7. Commit
    - Run:
-   - `git add playground/debug/bisect-log.txt`
-   - `git commit -m "task-16: record bisect result"`
-7. Push
+   - `git add playground/debug/history-detective.md`
+   - `git commit -m "task-16: add history detective evidence"`
+8. Push
    - Run:
    - `git push`
-8. Refresh UI
+9. Refresh UI
    - Open `http://localhost:5173` and refresh the page.
    - Confirm `Task 16 Completed` is shown.

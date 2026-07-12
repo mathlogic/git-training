@@ -168,13 +168,13 @@ export const starterTasks = [
   {
     id: 16,
     code: "T16",
-    title: "Bisect",
+    title: "History detective",
     phase: "advanced",
     points: 5,
-    hintFile: "playground/debug/bisect-log.txt",
+    hintFile: "playground/debug/history-detective.md",
     hintLine: 1,
-    expected: "Identify bad commit hash using bisect.",
-    concept: "Bisect"
+    expected: "Find when TASK_DEFS was introduced using git log -S.",
+    concept: "History investigation"
   },
   {
     id: 17,

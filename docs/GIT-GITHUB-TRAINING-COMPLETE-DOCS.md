@@ -20,7 +20,7 @@ Trainees learn to:
 - open structured pull requests
 - resolve conflicts safely
 - use rebase, squash, stash, cherry-pick, revert, and tag
-- recover from mistakes using reflog and history tools
+- investigate history with `git log -S` and recover from mistakes using reflog
 
 ## 3. Training Philosophy
 Principle:
@@ -282,17 +282,16 @@ git push
 git push origin task-15-<name>
 ```
 
-### T16 - Bisect
-- Hint: `playground/debug/bisect-log.txt` line 1
-- Checker evidence: hint file has bisect evidence content
+### T16 - Git History Detective
+- Hint: `playground/debug/history-detective.md` line 1
+- Checker evidence:
+  - evidence includes `git log -S "TASK_DEFS" -- check.py`
+  - recorded commit hash matches the history search result
+  - matching commit message is recorded
 - Quick commands:
 ```bash
-git bisect start
-git bisect bad
-git bisect good <known-good-commit>
-# test each step and mark good/bad until culprit found
-git bisect reset
-# write bad commit details in playground/debug/bisect-log.txt
+git log -S "TASK_DEFS" -- check.py
+# write command, commit hash, and commit message in playground/debug/history-detective.md
 python check.py --task 16
 ```
 
@@ -416,7 +415,7 @@ python check.py --task 02
 - Day 1: T01-T05 (foundations)
 - Day 2: T06-T10 (PR, conflict, stash, recovery)
 - Day 3: T11-T15 (history cleanup, cherry-pick, revert, tags)
-- Day 4: T16-T20 (advanced recovery, release flow, final evidence)
+- Day 4: T16-T20 (history investigation, recovery, release flow, final evidence)
 
 ## 15. Why This Model Works
 - beginner-friendly ramp-up

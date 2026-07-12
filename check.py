@@ -44,7 +44,7 @@ TASK_DEFS: Dict[int, TaskDef] = {
     13: TaskDef(13, "T13", "Cherry-pick", "core", 5, "playground/releases/hotfix-note.txt", 1, "Cherry-pick trainer hotfix commit.", "Cherry-pick"),
     14: TaskDef(14, "T14", "Revert safely", "core", 5, "playground/ui/notice.txt", 2, "Revert wrong change with git revert.", "Revert"),
     15: TaskDef(15, "T15", "Tagging", "core", 5, "playground/releases/version.txt", 1, "Create annotated tag task-15-<name>.", "Tagging"),
-    16: TaskDef(16, "T16", "Bisect", "advanced", 5, "playground/debug/bisect-log.txt", 1, "Identify bad commit hash using bisect.", "Bisect"),
+    16: TaskDef(16, "T16", "History detective", "advanced", 5, "playground/debug/history-detective.md", 1, "Find when TASK_DEFS was introduced using git log -S.", "History investigation"),
     17: TaskDef(17, "T17", "Reflog recovery", "advanced", 5, "trainee/checkpoints/task-17.md", 4, "Recover from wrong reset using reflog.", "Reflog"),
     18: TaskDef(18, "T18", "Autosquash cleanup", "advanced", 5, "trainee/checkpoints/task-18.md", 3, "Use fixup commit + autosquash rebase.", "Autosquash"),
     19: TaskDef(19, "T19", "Release branch flow", "advanced", 5, "playground/releases/version.txt", 1, "Create release/<version> flow commit.", "Release workflow"),
@@ -153,6 +153,13 @@ def read_line(rel_path: str, line_no: int) -> str:
     return lines[line_no - 1].strip()
 
 
+def read_file(rel_path: str) -> str:
+    path = file_path(rel_path)
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8", errors="ignore")
+
+
 def file_contains(rel_path: str, needles: List[str]) -> bool:
     path = file_path(rel_path)
     if not path.exists():
@@ -213,6 +220,11 @@ def has_tag_like(prefix: str) -> bool:
 def commits_since(base_ref: str) -> int:
     out = git_out("rev-list", "--count", f"{base_ref}..HEAD")
     return int(out) if out.isdigit() else -1
+
+
+def history_search_hashes(needle: str, rel_path: str) -> List[str]:
+    out = git_out("log", "--format=%H", "-S", needle, "--", rel_path)
+    return [line.strip().lower() for line in out.splitlines() if line.strip()]
 
 
 def validate_task(task: TaskDef) -> Report:
@@ -366,10 +378,45 @@ def validate_task(task: TaskDef) -> Report:
         )
 
     elif task.id == 16:
+        evidence = read_file(task.hint_file)
+        has_history_command = (
+            bool(re.search(r"\bgit\s+log\b", evidence, flags=re.IGNORECASE))
+            and "-S" in evidence
+            and "TASK_DEFS" in evidence
+            and "check.py" in evidence
+        )
+        recorded_hashes = [
+            item.lower()
+            for item in re.findall(r"\b[0-9a-f]{7,40}\b", evidence, flags=re.IGNORECASE)
+        ]
+        target_hashes = history_search_hashes("TASK_DEFS", "check.py")
+        matching_hash = any(
+            full_hash.startswith(recorded_hash)
+            for recorded_hash in recorded_hashes
+            for full_hash in target_hashes
+        )
+        message_match = re.search(r"Commit message:\s*(.+)", evidence, flags=re.IGNORECASE)
+        commit_message = message_match.group(1).strip() if message_match else ""
+
         report.require(
-            file_contains(task.hint_file, ["bad", "commit"]) or bool(hint_line),
-            "Bisect evidence file has content.",
-            "Bisect evidence file missing expected details. Record identified bad commit hash.",
+            has_history_command,
+            "Evidence records the git log -S history search command.",
+            'Evidence must include `git log -S "TASK_DEFS" -- check.py`.',
+        )
+        report.require(
+            bool(recorded_hashes),
+            "Evidence includes a commit hash.",
+            "Evidence must record the commit hash found by the history search.",
+        )
+        report.require(
+            matching_hash,
+            "Recorded hash matches the TASK_DEFS history search result.",
+            'Commit hash should match output from `git log -S "TASK_DEFS" -- check.py`.',
+        )
+        report.require(
+            bool(commit_message and "<commit-message>" not in commit_message.lower()),
+            "Evidence includes the matching commit message.",
+            "Evidence must include the matching commit message.",
         )
 
     elif task.id == 17:
