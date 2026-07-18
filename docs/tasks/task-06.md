@@ -42,3 +42,4 @@ python check.py --task 06
 8. Refresh UI
    - Open `http://localhost:5173` and refresh the page.
    - Confirm `Task 06 Completed` is shown.
+
