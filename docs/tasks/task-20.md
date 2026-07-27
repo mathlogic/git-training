@@ -34,7 +34,8 @@ python check.py --task 20
 6. Commit
    - Run:
    - `git add evidence/final-summary.md`
-   - `git commit -m "task-20: add final summary evidence"`
+   - `
+   `
 7. Push
    - Run:
    - `git push`
