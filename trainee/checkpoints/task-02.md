@@ -1,2 +1,2 @@
-Name:nikita-fnmathlogic
-Email:nikita@fnmathlogic.com
+Name:poornima-fn
+Email:poornima@fnmathlogic.com
