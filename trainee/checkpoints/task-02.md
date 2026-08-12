@@ -1,2 +1,3 @@
-Name:nikita-fnmathlogic
-Email:nikita@fnmathlogic.com
+Task 02
+Name: Aniruddh Kushwah
+Email: aniruddh.kushwah@fnmathlogic.com

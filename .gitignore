@@ -3,6 +3,10 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+#added by aniruddh-fnmathlogic
+*.log
+.DS_Store
+
 # C extensions
 *.so
 
