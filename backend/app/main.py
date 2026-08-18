@@ -52,11 +52,17 @@ def _read_git_config(key: str) -> str:
 
 
 def _derive_git_username(name: str, email: str) -> str:
-    email_part = email.split("@")[0].strip() if "@" in email else ""
-    fallback = re.sub(r"\s+", ".", name.strip().lower())
-    candidate = email_part or fallback
-    cleaned = re.sub(r"[^a-zA-Z0-9._-]", "", candidate)
-    return cleaned or "working.user"
+    normalized_name = (name or "").strip()
+    normalized_email = (email or "").strip()
+
+    if normalized_name:
+        cleaned_name = re.sub(r"[^a-zA-Z0-9._-]", "", normalized_name)
+        if cleaned_name:
+            return cleaned_name.lower()
+
+    email_part = normalized_email.split("@")[0].strip() if "@" in normalized_email else ""
+    cleaned_email = re.sub(r"[^a-zA-Z0-9._-]", "", email_part)
+    return cleaned_email.lower() or "working.user"
 
 
 def _run_task_check(task_id: int) -> dict:
