@@ -1,0 +1,2 @@
+Trainer workspace baseline
+Resolve cleanly for Phase 2

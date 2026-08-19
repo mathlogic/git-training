@@ -15,6 +15,7 @@ Undo a wrong change using `git revert`.
 
 ```text
 Task 14 revert completed
+
 ```
 
 4. Save
