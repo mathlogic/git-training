@@ -1,2 +1,4 @@
 Task 17
-:wq
+Recovery completed via reflog
+Recovered commit: a8caecd
+Branch state restored
