@@ -1,4 +1,4 @@
-﻿# Task 13 - Cherry-pick
+# Task 13 - Cherry-pick
 
 ## Goal
 Cherry-pick trainer hotfix commit into your trainee branch.
